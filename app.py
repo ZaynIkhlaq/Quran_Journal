@@ -259,9 +259,9 @@ def main():
         )
         
         if api_key:
-            st.success("✅ API key provided")
+            st.success("✅ API key provided. AI features enabled.")
         else:
-            st.warning("⚠️ Please enter your OpenRouter API key to use AI features")
+            st.info("AI-powered emotion and comfort features are optional. Enter your API key above to enable them.")
         
         st.markdown("---")
         st.markdown("### 📖 How to get an API key:")
@@ -278,23 +278,18 @@ def main():
 def show_journal_page(df, embeddings, api_key):
     """Display the main journal entry page"""
     st.markdown("### Write your thoughts below and discover relevant ayahs with reflection.")
-    
-    # Journal entry input
-    entry = st.text_area(
-        "Your Journal Entry",
-        placeholder="Write your journal entry here...",
-        height=150,
-        key="journal_entry"
-    )
-    
-    col1, col2 = st.columns([1, 4])
-    with col1:
-        submit_button = st.button("🔄 Reflect", type="primary")
-    
-    if submit_button and entry.strip():
-        if not api_key:
-            st.error("❌ Please enter your OpenRouter API key in the sidebar to use AI features.")
-            return
+
+    # Use a form for cleaner UI and Enter-to-submit
+    with st.form("journal_form", clear_on_submit=False):
+        entry = st.text_area(
+            "Your Journal Entry",
+            placeholder="Write your journal entry here...",
+            height=150,
+            key="journal_entry"
+        )
+        submitted = st.form_submit_button("Submit (or press Enter)", use_container_width=True)
+
+    if submitted and entry.strip():
         process_journal_entry(entry.strip(), df, embeddings, api_key)
 
 def process_journal_entry(entry: str, df, embeddings, api_key):
@@ -306,23 +301,25 @@ def process_journal_entry(entry: str, df, embeddings, api_key):
     with progress_container:
         st.markdown("### Processing your entry...")
         
-        # Step 1: Find similar ayahs
+        # Step 1: Find similar ayahs (always available)
         with st.spinner("🔍 Finding relevant Quran verses..."):
             matches = find_similar_verses(entry, df, embeddings)
         
-        # Step 2: Detect emotion
-        with st.spinner("🧠 Analyzing emotions..."):
-            emotion = detect_emotion(entry, api_key)
-        
-        # Step 3: Generate comfort message
-        with st.spinner("🌿 Creating comforting message..."):
-            comfort = generate_comfort_message(entry, api_key)
+        # Step 2: Detect emotion and generate comfort message (only if API key is provided)
+        if api_key:
+            with st.spinner("🧠 Analyzing emotions..."):
+                emotion = detect_emotion(entry, api_key)
+            with st.spinner("🌿 Creating comforting message..."):
+                comfort = generate_comfort_message(entry, api_key)
+        else:
+            emotion = None
+            comfort = None
         
         # Clear progress and display results
         progress_container.empty()
-        display_results(matches, comfort, emotion)
+        display_results(matches, comfort, emotion, api_key is not None)
 
-def display_results(matches, comfort, emotion):
+def display_results(matches, comfort, emotion, show_ai_features):
     """Display the results of journal processing"""
     st.markdown("---")
     st.markdown("### 📖 Relevant Ayahs")
@@ -338,24 +335,23 @@ def display_results(matches, comfort, emotion):
             </div>
             """, unsafe_allow_html=True)
     
-    # Display comfort message
-    st.markdown("### 🌿 Gentle Reminder")
-    st.markdown(f"""
-    <div class="comfort-box">
-        <p style="color: #fcd34d; margin: 0; font-style: italic;">{comfort}</p>
-    </div>
-    """, unsafe_allow_html=True)
+    # Only show AI features if API key is provided
+    if show_ai_features:
+        st.markdown("### 🌿 Gentle Reminder")
+        st.markdown(f"""
+        <div class="comfort-box">
+            <p style="color: #fcd34d; margin: 0; font-style: italic;">{comfort}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("### 💭 Detected Emotion")
+        emotion_color = get_emotion_color(emotion)
+        st.markdown(f"""
+        <div class="emotion-box">
+            <p style="margin: 0;">Your entry reflects: <span class="emotion-tag {emotion_color}">{emotion}</span></p>
+        </div>
+        """, unsafe_allow_html=True)
     
-    # Emotion tracking (simplified - just show detected emotion)
-    st.markdown("### 💭 Detected Emotion")
-    emotion_color = get_emotion_color(emotion)
-    st.markdown(f"""
-    <div class="emotion-box">
-        <p style="margin: 0;">Your entry reflects: <span class="emotion-tag {emotion_color}">{emotion}</span></p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Success message
     st.success("✅ Entry processed successfully! Write another entry above to continue.")
 
 if __name__ == "__main__":
