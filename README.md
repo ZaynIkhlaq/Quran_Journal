@@ -1,15 +1,14 @@
-# 🕊️ Quran Journal
+# Quran Journal
 
-A simple, beautiful Streamlit app to help you reflect emotionally and spiritually by journaling. Get relevant Qur’anic ayahs, gentle comforting messages, and AI-powered emotion detection—all in one place.
+A simple Streamlit app. 
+Get relevant Qur’anic ayahs and AI-powered emotion detection—all in one place.
 Forked from Original Creator.
 ---
 
-## ✨ Features
+## Features
 
-- **📝 Journal Freely:** Write your thoughts and feelings in a safe space.
 - **📖 Quranic Reflection:** Instantly find relevant ayahs (verses) from the Quran using AI-powered semantic search.
 - **🧠 Emotion Detection:** The app detects your emotional state from your journal entry.
-- **🌿 Comforting Messages:** Receive gentle, Islamic-inspired comfort based on your mood.
 - **🔑 Easy Setup:** Enter your OpenRouter API key directly in the app—no environment variables needed.
 - **⚡ Fast & Lightweight:** Loads pre-computed Quran embeddings directly from GitHub for quick verse matching.
 
@@ -18,7 +17,9 @@ Forked from Original Creator.
 ## Try the Demo
 [QuranJournal](https://quranjournal.streamlit.app/)
 
-## 🚀 Quick Start
+---
+
+## Quick Start
 
 1. **Clone the repository:**
    ```bash
@@ -79,10 +80,9 @@ Quran_Journal/
 ## How It Works
 
 1. **Write your journal entry** in the text area.
-2. **Click “Reflect”** to process your entry.
-3. **Get relevant Quran verses** that match your thoughts.
-4. **See your detected emotion** and receive a comforting message.
-5. **Enter your API key** in the sidebar for AI features.
+2. **Get relevant Quran verses** that match your thoughts.
+3. **See your detected emotion** and receive a comforting message.
+4. **Enter your API key** in the sidebar for AI emotion detection.
 
 ---
 
@@ -95,8 +95,8 @@ See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
-Pull requests and suggestions are welcome!  
-Feel free to open an issue or submit a PR.
+Pull requests and suggestions are welcome.  
+Feel free to open an issue or submit a PR or learn or copy or pretty much anything you want.
 
 ---
 
@@ -109,7 +109,7 @@ Feel free to open an issue or submit a PR.
 
 ---
 
-**May this app help you find peace and reflection through journaling and the Quran.**
+**May this app help you find peace.**
 
 
 
