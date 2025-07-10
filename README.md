@@ -1,7 +1,7 @@
 # 🕊️ Quran Journal
 
 A simple, beautiful Streamlit app to help you reflect emotionally and spiritually by journaling. Get relevant Qur’anic ayahs, gentle comforting messages, and AI-powered emotion detection—all in one place.
-
+Forked from Original Creator.
 ---
 
 ## ✨ Features
@@ -14,6 +14,9 @@ A simple, beautiful Streamlit app to help you reflect emotionally and spirituall
 - **⚡ Fast & Lightweight:** Loads pre-computed Quran embeddings directly from GitHub for quick verse matching.
 
 ---
+
+## Try the Demo
+[QuranJournal](https://quranjournal.streamlit.app/)
 
 ## 🚀 Quick Start
 
@@ -58,7 +61,7 @@ A simple, beautiful Streamlit app to help you reflect emotionally and spirituall
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Quran_Journal/
@@ -73,7 +76,7 @@ Quran_Journal/
 
 ---
 
-## 💡 How It Works
+## How It Works
 
 1. **Write your journal entry** in the text area.
 2. **Click “Reflect”** to process your entry.
@@ -83,21 +86,21 @@ Quran_Journal/
 
 ---
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License.  
 See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests and suggestions are welcome!  
 Feel free to open an issue or submit a PR.
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 - Full Credit to Original Creator [QuranJournal](https://github.com/RoumaisaTanveer/Quran_Journal)
 - [OpenRouter](https://openrouter.ai/) for LLM API access
