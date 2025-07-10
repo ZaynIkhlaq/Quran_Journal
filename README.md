@@ -1,70 +1,112 @@
-#  Qur’an-Powered Journaling App
+# 🕊️ Quran Journal
 
-A simple web app that helps you reflect emotionally and spiritually by journaling. It uses AI to provide relevant Qur’anic ayahs, gentle comforting messages, and tracks your emotional state before and after.
-
-> ⚠️ This is a **first prototype** built for feedback and learning purposes.  
-> I’m actively working on developing a more polished and production-ready version as mobile app.
-
+A simple, beautiful Streamlit app to help you reflect emotionally and spiritually by journaling. Get relevant Qur’anic ayahs, gentle comforting messages, and AI-powered emotion detection—all in one place.
 
 ---
 
 ## ✨ Features
 
-- 📝 Write journal entries freely
-- 🌿 Get **relevant Qur’anic ayahs** in Arabic and English using semantic search
-- 🤍 Receive **gentle, calming messages** powered by an LLM
-- 🧠 Track your **emotions before and after reflection**
-- 📜 View and manage your **journal history**
-- 🗑️ Delete entries via a smooth confirmation modal
+- **📝 Journal Freely:** Write your thoughts and feelings in a safe space.
+- **📖 Quranic Reflection:** Instantly find relevant ayahs (verses) from the Quran using AI-powered semantic search.
+- **🧠 Emotion Detection:** The app detects your emotional state from your journal entry.
+- **🌿 Comforting Messages:** Receive gentle, Islamic-inspired comfort based on your mood.
+- **🔑 Easy Setup:** Enter your OpenRouter API key directly in the app—no environment variables needed.
+- **⚡ Fast & Lightweight:** Loads pre-computed Quran embeddings directly from GitHub for quick verse matching.
 
 ---
 
-## Demo 
+## 🚀 Quick Start
 
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ZaynIkhlaq/Quran_Journal.git
+   cd Quran_Journal
+   ```
 
+2. **Create a virtual environment:**
+   ```bash
+   python -m venv myenv
+   myenv\Scripts\activate  # On Windows
+   # Or, for Mac/Linux:
+   # source myenv/bin/activate
+   ```
 
-https://github.com/user-attachments/assets/e934c31d-4efe-44f5-a5b3-c902e3a06a95
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
+4. **Run the app:**
+   ```bash
+   streamlit run app.py
+   ```
+
+5. **Get your OpenRouter API key:**
+   - Go to [OpenRouter](https://openrouter.ai/keys)
+   - Sign up and create an API key
+   - Enter it in the app sidebar when prompted
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer       | Tech Used                                          |
-|-------------|----------------------------------------------------|
-| **Backend** | FastAPI, SentenceTransformers (`all-MiniLM-L6-v2`) |
-| **LLM API** | OpenRouter + Mistral-7B                            |
-| **Frontend**| HTML, CSS, Vanilla JavaScript                      |
-| **Data**    | `quran_emotion_tagged.csv` (custom ayah dataset)  |
+| Layer        | Tech Used                                        |
+| ------------ | ------------------------------------------------ |
+| **Frontend** | Streamlit                                        |
+| **AI/ML**    | SentenceTransformers, OpenRouter API (Mistral-7B)|
+| **Data**     | Pre-computed Quran embeddings (loaded from GitHub)|
 
 ---
 
-## 📦 Setup Instructions
+## 📁 Project Structure
 
-After cloning and installing dependencies, create your own `.env` file with OpenRouter API details.
-
-## 📂 Running the App Locally
-
-1. Install the required packages:
-```bash
-pip install -r requirements.txt
+```
+Quran_Journal/
+│
+├── app.py                # Main Streamlit app
+├── create_embeddings.py  # Script to create Quran embeddings (only needed if updating data)
+├── requirements.txt      # Python dependencies
+├── README.md             # This file
+├── LICENSE               # License info
+├── .gitignore            # Files/folders to ignore in git
 ```
 
-2.Create a .env file in the root directory:
-```ini
-OPENROUTER_API_KEY=your-api-key-here  
-OPENROUTER_URL=https://openrouter.ai/api/v1/chat/completions  
-GPT_MODEL=mistralai/mistral-7b-instruc
-```
-3.Run the backend:
+---
 
-```bash
-uvicorn main:app --reload
-```
-4.Open the frontend:
-- Open index.html directly in your browser.
+## 💡 How It Works
 
-## 📄 License:
-[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
-- This project is free to use and modify for non-commercial purposes with proper attribution.
+1. **Write your journal entry** in the text area.
+2. **Click “Reflect”** to process your entry.
+3. **Get relevant Quran verses** that match your thoughts.
+4. **See your detected emotion** and receive a comforting message.
+5. **Enter your API key** in the sidebar for AI features.
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.  
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributing
+
+Pull requests and suggestions are welcome!  
+Feel free to open an issue or submit a PR.
+
+---
+
+## 🙏 Acknowledgements
+
+- Full Credit to Original Creator [QuranJournal](https://github.com/RoumaisaTanveer/Quran_Journal)
+- [OpenRouter](https://openrouter.ai/) for LLM API access
+- [SentenceTransformers](https://www.sbert.net/) for semantic search
+- The Quranic text and translation community
+
+---
+
+**May this app help you find peace and reflection through journaling and the Quran.**
+
+
 
