@@ -15,7 +15,7 @@ Forked from Original Creator.
 ---
 
 ## Try the Demo
-[QuranJournal](https://quranjournal.streamlit.app/)
+https://quranjournal.streamlit.app
 
 ---
 
